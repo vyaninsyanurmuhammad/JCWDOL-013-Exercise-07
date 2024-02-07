@@ -16,7 +16,7 @@ const getIntersectionTwoEqual = (objA, objB) => {
 
     for (const key in objA) {
 
-        if (objB.hasOwnProperty(key) && objA[key] === objB[key]) {
+        if (Object.hasOwn(objB, key) && objA[key] === objB[key]) {
             result[key] = objA[key];
         }
     }
