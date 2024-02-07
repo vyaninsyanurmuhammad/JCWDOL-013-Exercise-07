@@ -26,3 +26,33 @@ const getIntersectionTwoEqual = (objA, objB) => {
 console.log(getIntersectionTwoEqual({ a: 1, b: 2 }, { a: 1, c: 3 }));
 
 console.log("-------------------------------------------------------");
+
+// Create a function to merge two array of student data and remove duplicate data
+
+const mergeTwoStudentList = (listA, listB) => {
+    let result = [];
+
+    const hasDuplicate = (name) => result.some(student => student.name === name);
+
+    for (const data of listA) {
+        if (!hasDuplicate(data.name)) result.push(data);
+    }
+
+    for (const data of listB) {
+        if (!hasDuplicate(data.name)) result.push(data);
+    }
+
+    return result;
+}
+
+mergeTwoStudentList(
+    [
+        { name: "Student 1", email: "student1@mail.com" },
+        { name: "Student 2", email: "student2@mail.com" }
+    ],
+    [
+        { name: "Student 1", email: "student1@mail.com" },
+        { name: "Student 3", email: "student3@mail.com" }
+    ]).forEach(data => console.log(data));
+
+console.log("-------------------------------------------------------");
