@@ -85,3 +85,78 @@ const findFactorialNumber = (num) => (num === 0 || num === 1) ? 1 : num * findFa
 console.log(findFactorialNumber(5));
 
 console.log("-------------------------------------------------------");
+
+// Shooting Game
+
+class ShootingGame {
+    constructor(player1, player2) {
+        this.player1 = player1;
+        this.player2 = player2;
+    }
+
+    getRandomItem() {
+        const health = Math.random() < 0.5 ? 0 : 10;
+        const power = Math.random() < 0.5 ? 0 : 10;
+
+        return { health, power };
+    }
+
+    start() {
+        while (this.player1.health > 0 && this.player2.health > 0) {
+            console.log("Player Status Before Shooting:");
+            this.player1.showStatus();
+            this.player2.showStatus();
+
+            const item1 = this.getRandomItem();
+            const item2 = this.getRandomItem();
+
+            this.player1.useItem(item1);
+            this.player2.useItem(item2);
+
+            console.log("Player Status After Shooting:");
+            this.player1.showStatus();
+            this.player2.showStatus();
+
+            this.player2.hit(this.player1.power);
+            this.player1.hit(this.player2.power);
+
+        }
+
+        if (this.player2.health <= 0) {
+            console.log(`${this.player1.name} wins!`);
+        }
+
+        if (this.player1.health <= 0) {
+            console.log(`${this.player2.name} wins!`);
+        }
+
+    }
+}
+
+class Player {
+    constructor(name, health = 100, power = 10) {
+        this.name = name;
+        this.health = health;
+        this.power = power;
+    }
+
+    hit(power) {
+        this.health -= power;
+    }
+
+    useItem(item) {
+        this.health += item.health;
+        this.power += item.power;
+    }
+
+    showStatus() {
+        console.log(`|${this.name}| (Health => ${this.health}, Power => ${this.power})`);
+    }
+}
+
+const terrorist = new Player("Terrorist");
+const counterTerrorist = new Player("Police");
+
+const game = new ShootingGame(terrorist, counterTerrorist);
+
+game.start();
