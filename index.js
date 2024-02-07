@@ -1,6 +1,7 @@
 // Create a function to check if two objects are equal
 
-const checkTwoObjectsEqual = (objA, objB) => objA.a === objB.a;
+// const checkTwoObjectsEqual = (objA, objB) => objA.a === objB.a;
+const checkTwoObjectsEqual = (objA, objB) => JSON.stringify(objA) === JSON.stringify(objB);
 
 console.log(checkTwoObjectsEqual({ a: 2 }, { a: 1 }));
 console.log(checkTwoObjectsEqual({ a: "Hello" }, { a: 1 }));
