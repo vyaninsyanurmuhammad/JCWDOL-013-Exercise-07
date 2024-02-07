@@ -78,3 +78,10 @@ switchAllValueIntoKey([{ name: "David", age: 20 }, { lamp: "LED", price: 2000 }]
 
 console.log("-------------------------------------------------------");
 
+// Create a function to find a factorial number using recursion
+
+const findFactorialNumber = (num) => (num === 0 || num === 1) ? 1 : num * findFactorialNumber(num - 1);
+
+console.log(findFactorialNumber(5));
+
+console.log("-------------------------------------------------------");
