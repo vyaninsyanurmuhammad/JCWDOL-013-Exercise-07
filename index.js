@@ -56,3 +56,25 @@ mergeTwoStudentList(
     ]).forEach(data => console.log(data));
 
 console.log("-------------------------------------------------------");
+
+// Create a function that can accept input as an array of objects and switch all values into property and property into value
+
+const switchAllValueIntoKey = (listObj) => {
+
+    const result = [];
+
+    for (const obj of listObj) {
+        let newObj = {};
+        for (const iterator in obj) {
+            newObj[obj[iterator]] = iterator;
+        }
+        result.push(newObj);
+    }
+
+    return result;
+}
+
+switchAllValueIntoKey([{ name: "David", age: 20 }, { lamp: "LED", price: 2000 }]).forEach(data => console.log(data));
+
+console.log("-------------------------------------------------------");
+
